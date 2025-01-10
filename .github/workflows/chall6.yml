@@ -18,4 +18,4 @@ jobs:
 
       - name: Can't touch this
         run: |
-          echo Flag: ${{ secrets.FLAG }}
+          echo Flag: ${{ secrets.FLAG6 }}
