@@ -1,9 +1,9 @@
 name: Skip it
 on:
-  workflow_dispatch:
   issues:
 jobs:
   setup:
+    if: ${{ github.event.label.name == 'chall7' }}
     runs-on: ubuntu-latest
     outputs:
       skip: ${{ steps.validate.outputs.skip }}
