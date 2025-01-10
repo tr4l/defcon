@@ -10,6 +10,7 @@ permissions:
   
 jobs:
   create_release_from_issue:
+    if: ${{ github.event.label.name == 'chall2' }}
     runs-on: ubuntu-latest
     steps:
       - name: Clone the repo
