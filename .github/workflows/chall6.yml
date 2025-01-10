@@ -1,0 +1,20 @@
+name: How can I get the flag
+on:
+  issues
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Parse body
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          echo "Save body"
+          echo ${BODY} > /tmp/issue.txt
+          echo "Check body content"
+          cat /tmp/issue.txt
+
+      - name: Can't touch this
+        run: |
+          echo Flag: ${{ secrets.FLAG }}
