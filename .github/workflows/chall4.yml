@@ -4,6 +4,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'chall4' }}
     steps:
       - name: Check my flag is correctly masked
         run: "echo Flag: ${{ secrets.FLAG }}"
