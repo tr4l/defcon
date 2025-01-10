@@ -1,0 +1,14 @@
+# .github/workflows/example.yml
+name: Jobs example
+on:
+  workflow_dispatch:  
+
+jobs:
+  Stuff:
+    name: Job name
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Output a variable
+        run: |
+           echo "${{ vars.VARIABLE }}"
+           # echo "${{ vars.VARIABLE2 }}" 
