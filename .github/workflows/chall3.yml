@@ -4,7 +4,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == 'chall3' }}
     steps:
       - name: Set the intermediate environment variable for security
         env:
