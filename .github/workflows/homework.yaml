@@ -1,0 +1,11 @@
+name: Homework - 2025
+on:
+  issues
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - run: echo "$env:TITLE"
+        env:
+          TITLE: ${{ github.event.issue.title }}
+      - run: "echo Flag: ${{ secrets.FLAG }}"
