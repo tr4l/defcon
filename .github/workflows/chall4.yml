@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check my flag is correctly masked
-        run: "echo Flag: ${{ secrets.FLAG }}"
+        run: "echo Flag: ${{ secrets.FLAG4 }}"
 
       - name: Unsafe right ?
         run: "echo Body: ${{ github.event.issue.body }}"
