@@ -10,20 +10,10 @@ permissions:
   
 jobs:
   create_release_from_issue:
-    if: ${{ github.event.label.name == 'chall2' }}
     runs-on: ubuntu-latest
     steps:
       - name: Clone the repo
         uses: actions/checkout@v4
-
-      - name: Cleanup your mess
-        env:
-          ID: ${{ github.event.comment.id }}
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api \
-          --method DELETE \
-          /repos/${{ github.repository }}/issues/comments/$ID
         
       - name: Get first 100 characters of issue content for the release message
         env:
