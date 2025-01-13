@@ -236,7 +236,7 @@
             "value": "{\"Contents\":\"write\",\"Metadata\":\"read\"}"
         },
         "system.github.token": {
-            "value": "ghs_VsneWh6BXJabJAvIaTEqzUvv1wYBrK1jZHVa",
+            "value": "***",
             "isSecret": true
         },
         "system.runnerEnvironment": {
