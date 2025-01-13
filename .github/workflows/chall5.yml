@@ -4,7 +4,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == 'chall5' }}
     steps:
       - if: ${{ github.secret_source == 'Actions' }}
         name: Check that flag is present
