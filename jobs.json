@@ -1,0 +1,1033 @@
+{
+    "fileTable": [
+        ".github/workflows/memdump.yml"
+    ],
+    "mask": [
+        {
+            "type": "regex",
+            "value": "\\bv1\\.[0-9A-Fa-f]{40}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\bgh[pousr]{1}_[A-Za-z0-9]{36}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\bgithub_pat_[0-9][A-Za-z0-9]{21}_[A-Za-z0-9]{59}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\b(?:eyJ0eXAiOi|eyJhbGciOi|eyJ4NXQiOi|eyJraWQiOi)[^\\s'\";]+"
+        },
+        {
+            "type": "regex",
+            "value": "\\bBearer\\s+[^\\s'\";]+"
+        },
+        {
+            "type": "regex",
+            "value": "\\b(?i:Password|Pwd)=(?:[^\\s'\";]+|\"[^\"]+\")"
+        },
+        {
+            "type": "regex",
+            "value": "\\s+-(?i:Password|Pwd)\\s+(?:[^\\s'\";]+|\"[^\"]+\")"
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z-_~.]{3}7Q~[0-9A-Za-z-_~.]{31}\\b|\\b[0-9A-Za-z-_~.]{3}8Q~[0-9A-Za-z-_~.]{34}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z]{33}AzCa[A-P][0-9A-Za-z]{5}="
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z+/]{76}(APIM|ACDb|\\+(ABa|AMC|ASt))[0-9A-Za-z+/]{5}[AQgw]=="
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z+/]{33}(AIoT|\\+(ASb|AEh|ARm))[A-P][0-9A-Za-z+/]{5}="
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z]{42}AzSe[A-D][0-9A-Za-z]{5}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z_\\-]{44}AzFu[0-9A-Za-z\\-_]{5}[AQgw]=="
+        },
+        {
+            "type": "regex",
+            "value": "\\b[0-9A-Za-z+/]{42}\\+ACR[A-D][0-9A-Za-z+/]{5}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\boy2[a-p][0-9a-z]{15}[aq][0-9a-z]{11}[eu][bdfhjlnprtvxz357][a-p][0-9a-z]{11}[aeimquy4]\\b"
+        },
+        {
+            "type": "regex",
+            "value": "\\bnpm_[0-9A-Za-z]{36}\\b"
+        },
+        {
+            "type": "regex",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ikh5cTROQVRBanNucUM3bWRydEFoaHJDUjJfUSJ9\\.eyJuYW1laWQiOiJkZGRkZGRkZC1kZGRkLWRkZGQtZGRkZC1kZGRkZGRkZGRkZGQiLCJzY3AiOiJBY3Rpb25zLkdlbmVyaWNSZWFkOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCBBY3Rpb25zLlJlc3VsdHM6ZTk5MzlhNTUtOTUwNS00NTkxLWJjZGEtMDI5ODdjNDdkMGFlOjI2ZTYyMDY2LTdhOWMtNWRhNy0wMDU2LTgxYmY4YmJhOWY4MyBBY3Rpb25zLlVwbG9hZEFydGlmYWN0czowMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAvMTpCdWlsZC9CdWlsZC85MTMgTG9jYXRpb25TZXJ2aWNlLkNvbm5lY3QgUmVhZEFuZFVwZGF0ZUJ1aWxkQnlVcmk6MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwLzE6QnVpbGQvQnVpbGQvOTEzIiwiSWRlbnRpdHlUeXBlQ2xhaW0iOiJTeXN0ZW06U2VydmljZUlkZW50aXR5IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiREREREREREQtRERERC1ERERELUREREQtREREREREREREREREIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9wcmltYXJ5c2lkIjoiZGRkZGRkZGQtZGRkZC1kZGRkLWRkZGQtZGRkZGRkZGRkZGRkIiwiYXVpIjoiNDQ3NDEzN2ItOTA1OC00YWZlLTgyMzktZDA5ODgwYTFkNzUyIiwic2lkIjoiOGEyYjNmMmMtOWJjMi00N2JjLWE5YzEtMDRhNzE2YTg5ZWQ5IiwiYWMiOiJbe1wiU2NvcGVcIjpcInJlZnMvaGVhZHMvbWFpblwiLFwiUGVybWlzc2lvblwiOjN9XSIsImFjc2wiOiIxMCIsIm9yY2hpZCI6ImU5OTM5YTU1LTk1MDUtNDU5MS1iY2RhLTAyOTg3YzQ3ZDBhZS5zdHVmZi5fX2RlZmF1bHQiLCJpc3MiOiJ2c3Rva2VuLmFjdGlvbnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwiYXVkIjoidnN0b2tlbi5hY3Rpb25zLmdpdGh1YnVzZXJjb250ZW50LmNvbXx2c286MmEzYWE0ZTktMmVlNC00YjEyLTlmOWEtZmFjMGM4NTU2YzQyIiwibmJmIjoxNzM0OTQ4MTQxLCJleHAiOjE3MzQ5NzA5NDF9\\.AdYY1NpQ6_taNB0Lid4N1Ee9m2xv0fRZH7TXppfHaBNvqTtlOTmWJeKH61O4FI4HCVhDxiz-vMy58g4lmOXEN4lSk0_d0Me5_BzTxOkHotw89jR_CbEASt-XarcL5LwrMma8wwU0ty9NYzP1PrWA3S9JcfBw8O8Q033n2uMKavhRmEOtA4itvNxgnO-8xpEjQ3KJOzVs5-h2uJ1oQ9islgcf8IFrahrht84_MjPqgrw20AYjKYTTxLVpN6awhOpVTeUiImUV1T2I6MuvHQK20fPQhdVz3x3ERI7aYbHG21vu8nahfsP98w68rZNvV8lJDDH_umEtUMhCwS_u2ciJnQ"
+        },
+        {
+            "type": "regex",
+            "value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ikh5cTROQVRBanNucUM3bWRydEFoaHJDUjJfUSJ9\\.eyJuYW1laWQiOiJkZGRkZGRkZC1kZGRkLWRkZGQtZGRkZC1kZGRkZGRkZGRkZGQiLCJzY3AiOiJBY3Rpb25zLkdlbmVyaWNSZWFkOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCBBY3Rpb25zLlJlc3VsdHM6ZTk5MzlhNTUtOTUwNS00NTkxLWJjZGEtMDI5ODdjNDdkMGFlOjI2ZTYyMDY2LTdhOWMtNWRhNy0wMDU2LTgxYmY4YmJhOWY4MyBBY3Rpb25zLlVwbG9hZEFydGlmYWN0czowMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAvMTpCdWlsZC9CdWlsZC85MTMgTG9jYXRpb25TZXJ2aWNlLkNvbm5lY3QgUmVhZEFuZFVwZGF0ZUJ1aWxkQnlVcmk6MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwLzE6QnVpbGQvQnVpbGQvOTEzIiwiSWRlbnRpdHlUeXBlQ2xhaW0iOiJTeXN0ZW06U2VydmljZUlkZW50aXR5IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiREREREREREQtRERERC1ERERELUREREQtREREREREREREREREIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9wcmltYXJ5c2lkIjoiZGRkZGRkZGQtZGRkZC1kZGRkLWRkZGQtZGRkZGRkZGRkZGRkIiwiYXVpIjoiNDQ3NDEzN2ItOTA1OC00YWZlLTgyMzktZDA5ODgwYTFkNzUyIiwic2lkIjoiOGEyYjNmMmMtOWJjMi00N2JjLWE5YzEtMDRhNzE2YTg5ZWQ5IiwiYWMiOiJbe1wiU2NvcGVcIjpcInJlZnMvaGVhZHMvbWFpblwiLFwiUGVybWlzc2lvblwiOjN9XSIsImFjc2wiOiIxMCIsIm9yY2hpZCI6ImU5OTM5YTU1LTk1MDUtNDU5MS1iY2RhLTAyOTg3YzQ3ZDBhZS5zdHVmZi5fX2RlZmF1bHQiLCJpc3MiOiJ2c3Rva2VuLmFjdGlvbnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwiYXVkIjoidnN0b2tlbi5hY3Rpb25zLmdpdGh1YnVzZXJjb250ZW50LmNvbXx2c286MmEzYWE0ZTktMmVlNC00YjEyLTlmOWEtZmFjMGM4NTU2YzQyIiwibmJmIjoxNzM0OTQ4MTQxLCJleHAiOjE3MzQ5NzA5NDF9\\.AdYY1NpQ6_taNB0Lid4N1Ee9m2xv0fRZH7TXppfHaBNvqTtlOTmWJeKH61O4FI4HCVhDxiz-vMy58g4lmOXEN4lSk0_d0Me5_BzTxOkHotw89jR_CbEASt-XarcL5LwrMma8wwU0ty9NYzP1PrWA3S9JcfBw8O8Q033n2uMKavhRmEOtA4itvNxgnO-8xpEjQ3KJOzVs5-h2uJ1oQ9islgcf8IFrahrht84_MjPqgrw20AYjKYTTxLVpN6awhOpVTeUiImUV1T2I6MuvHQK20fPQhdVz3x3ERI7aYbHG21vu8nahfsP98w68rZNvV8lJDDH_umEtUMhCwS_u2ciJnQ\""
+        },
+        {
+            "type": "regex",
+            "value": "(?:[a-zA-Z][a-zA-Z\\d+-.]*):\\/\\/([a-zA-Z\\d\\-._~\\!$&'()*+,;=%]+):([a-zA-Z\\d\\-._~\\!$&'()*+,;=:%]*)@"
+        }
+    ],
+    "steps": [
+        {
+            "type": "action",
+            "reference": {
+                "type": "script"
+            },
+            "displayNameToken": {
+                "type": 0,
+                "file": 1,
+                "line": 13,
+                "col": 15,
+                "lit": "Output a variable"
+            },
+            "contextName": "__run",
+            "inputs": {
+                "type": 2,
+                "map": [
+                    {
+                        "key": "script",
+                        "value": {
+                            "type": 3,
+                            "file": 1,
+                            "line": 14,
+                            "col": 14,
+                            "expr": "format('echo \"{0}\"\n# echo \"{1}\"\n', vars.VARIABLE, vars.VARIABLE2)"
+                        }
+                    }
+                ]
+            },
+            "condition": "success()",
+            "id": "efaa3446-2c3c-57b8-85a7-177909aad4f8",
+            "name": "__run"
+        }
+    ],
+    "variables": {
+        "system.isScheduled": {
+            "value": "False"
+        },
+        "system.servertype": {
+            "value": "Hosted"
+        },
+        "system.culture": {
+            "value": ""
+        },
+        "system.pipelineStartTime": {
+            "value": "2024-12-23 10:12:20+00:00"
+        },
+        "system.runner.lowdiskspacethreshold": {
+            "value": "100"
+        },
+        "DistributedTask.NewActionMetadata": {
+            "value": "true"
+        },
+        "DistributedTask.EnableCompositeActions": {
+            "value": "true"
+        },
+        "DistributedTask.EnhancedAnnotations": {
+            "value": "true"
+        },
+        "DistributedTask.UploadStepSummary": {
+            "value": "true"
+        },
+        "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+            "value": "true"
+        },
+        "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+            "value": "true"
+        },
+        "DistributedTask.AddWarningToNode12Action": {
+            "value": "true"
+        },
+        "DistributedTask.AddWarningToNode16Action": {
+            "value": "true"
+        },
+        "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+            "value": "true"
+        },
+        "DistributedTask.AllowRunnerContainerHooks": {
+            "value": "true"
+        },
+        "DistributedTask.DeprecateStepOutputCommands": {
+            "value": "true"
+        },
+        "DistributedTask.UseWhich2": {
+            "value": "true"
+        },
+        "DistributedTask.DetailUntarFailure": {
+            "value": "true"
+        },
+        "DistributedTask.UseActionArchiveCache": {
+            "value": "true"
+        },
+        "DistributedTask.EnableJobServerQueueTelemetry": {
+            "value": "true"
+        },
+        "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+            "value": "true"
+        },
+        "Actions.EnableHttpRedirects": {
+            "value": "true"
+        },
+        "system.teamProjectId": {
+            "value": "00000000-0000-0000-0000-000000000000"
+        },
+        "build.buildId": {
+            "value": "913"
+        },
+        "build.containerId": {
+            "value": "16825499"
+        },
+        "build.allowCreateArtifacts": {
+            "value": "False"
+        },
+        "system.workflowFilePath": {
+            "value": ".github/workflows/memdump.yml"
+        },
+        "system.phaseDisplayName": {
+            "value": "Job name"
+        },
+        "system.phaseId": {
+            "value": "6c0f0994-ec57-5ab8-69dc-c89203f0e60e"
+        },
+        "system.phaseName": {
+            "value": "Stuff"
+        },
+        "system.phaseAttempt": {
+            "value": "1"
+        },
+        "system.jobIdentifier": {
+            "value": "Stuff.__default"
+        },
+        "system.jobAttempt": {
+            "value": "1"
+        },
+        "System.JobPositionInPhase": {
+            "value": "1"
+        },
+        "System.TotalJobsInPhase": {
+            "value": "1"
+        },
+        "system.github.job": {
+            "value": "Stuff"
+        },
+        "system.jobDisplayName": {
+            "value": "Job name"
+        },
+        "system.jobId": {
+            "value": "26e62066-7a9c-5da7-0056-81bf8bba9f83"
+        },
+        "system.jobName": {
+            "value": "__default"
+        },
+        "system.github.token.permissions": {
+            "value": "{\"Contents\":\"write\",\"Metadata\":\"read\"}"
+        },
+        "system.github.token": {
+            "value": "***",
+            "isSecret": true
+        },
+        "system.runnerEnvironment": {
+            "value": "self-hosted"
+        },
+        "system.github.results_endpoint": {
+            "value": "https://results-receiver.actions.githubusercontent.com/"
+        },
+        "system.github.results_upload_with_sdk": {
+            "value": "True"
+        },
+        "system.testDotNet8Compatibility": {
+            "value": "true"
+        },
+        "system.dotNet8CompatibilityOutputLength": {
+            "value": "200"
+        },
+        "system.dotNet8CompatibilityOutputPattern": {
+            "value": "GLIBCXX"
+        },
+        "system.dotNet8CompatibilityWarning": {
+            "value": "The Actions runner will no longer support your OS version on November 1, 2024. Please upgrade to a supported version. For information, refer https://github.blog/changelog/2024-08-19-notice-of-upcoming-deprecations-and-breaking-changes-in-github-actions-runners/"
+        },
+        "system.orchestrationId": {
+            "value": "e9939a55-9505-4591-bcda-02987c47d0ae.stuff.__default"
+        },
+        "system.runnerGroupName": {
+            "value": "Default"
+        }
+    },
+    "messageType": "PipelineAgentJobRequest",
+    "plan": {
+        "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+        "planType": "Actions",
+        "version": 41,
+        "planId": "e9939a55-9505-4591-bcda-02987c47d0ae",
+        "planGroup": "Actions:00000000-0000-0000-0000-000000000000:1",
+        "artifactUri": "vstfs:///Build/Build/913",
+        "artifactLocation": null,
+        "definition": {
+            "_links": {},
+            "id": 3,
+            "name": "peter-porker"
+        },
+        "owner": {
+            "_links": {},
+            "id": 3,
+            "name": "tr4l"
+        }
+    },
+    "timeline": {
+        "id": "e9939a55-9505-4591-bcda-02987c47d0ae",
+        "changeId": 0,
+        "location": null
+    },
+    "jobId": "26e62066-7a9c-5da7-0056-81bf8bba9f83",
+    "jobDisplayName": "Job name",
+    "jobName": "__default",
+    "requestId": 996,
+    "lockedUntil": "0001-01-01T00:00:00",
+    "resources": {
+        "endpoints": [
+            {
+                "data": {
+                    "ServerId": "2a3aa4e9-2ee4-4b12-9f9a-fac0c8556c42",
+                    "ServerName": "N8Uc5UDeMbAvY7Rwf6PUnSDnr32z7LFxlJbvTq5eLEviuq5wJj",
+                    "CacheServerUrl": "https://acghubeus1.actions.githubusercontent.com/N8Uc5UDeMbAvY7Rwf6PUnSDnr32z7LFxlJbvTq5eLEviuq5wJj/",
+                    "FeedStreamUrl": "https://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+                    "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+                    "ConnectivityChecks": "[\"https://acghubeus0.actions.githubusercontent.com/_apis/health\",\"https://results-receiver.actions.githubusercontent.com/health\",\"https://pkg.actions.githubusercontent.com\",\"https://actions-results-receiver-production.githubapp.com/health\",\"https://pipelinesghubeus5.actions.githubusercontent.com/_apis/health\"]"
+                },
+                "name": "SystemVssConnection",
+                "url": "https://pipelinesghubeus5.actions.githubusercontent.com/N8Uc5UDeMbAvY7Rwf6PUnSDnr32z7LFxlJbvTq5eLEviuq5wJj/",
+                "authorization": {
+                    "parameters": {
+                        "AccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ikh5cTROQVRBanNucUM3bWRydEFoaHJDUjJfUSJ9.eyJuYW1laWQiOiJkZGRkZGRkZC1kZGRkLWRkZGQtZGRkZC1kZGRkZGRkZGRkZGQiLCJzY3AiOiJBY3Rpb25zLkdlbmVyaWNSZWFkOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCBBY3Rpb25zLlJlc3VsdHM6ZTk5MzlhNTUtOTUwNS00NTkxLWJjZGEtMDI5ODdjNDdkMGFlOjI2ZTYyMDY2LTdhOWMtNWRhNy0wMDU2LTgxYmY4YmJhOWY4MyBBY3Rpb25zLlVwbG9hZEFydGlmYWN0czowMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAvMTpCdWlsZC9CdWlsZC85MTMgTG9jYXRpb25TZXJ2aWNlLkNvbm5lY3QgUmVhZEFuZFVwZGF0ZUJ1aWxkQnlVcmk6MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwLzE6QnVpbGQvQnVpbGQvOTEzIiwiSWRlbnRpdHlUeXBlQ2xhaW0iOiJTeXN0ZW06U2VydmljZUlkZW50aXR5IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiREREREREREQtRERERC1ERERELUREREQtREREREREREREREREIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9wcmltYXJ5c2lkIjoiZGRkZGRkZGQtZGRkZC1kZGRkLWRkZGQtZGRkZGRkZGRkZGRkIiwiYXVpIjoiNDQ3NDEzN2ItOTA1OC00YWZlLTgyMzktZDA5ODgwYTFkNzUyIiwic2lkIjoiOGEyYjNmMmMtOWJjMi00N2JjLWE5YzEtMDRhNzE2YTg5ZWQ5IiwiYWMiOiJbe1wiU2NvcGVcIjpcInJlZnMvaGVhZHMvbWFpblwiLFwiUGVybWlzc2lvblwiOjN9XSIsImFjc2wiOiIxMCIsIm9yY2hpZCI6ImU5OTM5YTU1LTk1MDUtNDU5MS1iY2RhLTAyOTg3YzQ3ZDBhZS5zdHVmZi5fX2RlZmF1bHQiLCJpc3MiOiJ2c3Rva2VuLmFjdGlvbnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwiYXVkIjoidnN0b2tlbi5hY3Rpb25zLmdpdGh1YnVzZXJjb250ZW50LmNvbXx2c286MmEzYWE0ZTktMmVlNC00YjEyLTlmOWEtZmFjMGM4NTU2YzQyIiwibmJmIjoxNzM0OTQ4MTQxLCJleHAiOjE3MzQ5NzA5NDF9.AdYY1NpQ6_taNB0Lid4N1Ee9m2xv0fRZH7TXppfHaBNvqTtlOTmWJeKH61O4FI4HCVhDxiz-vMy58g4lmOXEN4lSk0_d0Me5_BzTxOkHotw89jR_CbEASt-XarcL5LwrMma8wwU0ty9NYzP1PrWA3S9JcfBw8O8Q033n2uMKavhRmEOtA4itvNxgnO-8xpEjQ3KJOzVs5-h2uJ1oQ9islgcf8IFrahrht84_MjPqgrw20AYjKYTTxLVpN6awhOpVTeUiImUV1T2I6MuvHQK20fPQhdVz3x3ERI7aYbHG21vu8nahfsP98w68rZNvV8lJDDH_umEtUMhCwS_u2ciJnQ"
+                    },
+                    "scheme": "OAuth"
+                },
+                "isShared": false,
+                "isReady": true
+            }
+        ]
+    },
+    "contextData": {
+        "github": {
+            "t": 2,
+            "d": [
+                {
+                    "k": "ref",
+                    "v": "refs/heads/main"
+                },
+                {
+                    "k": "sha",
+                    "v": "d0994203070363ba6f42c5a47c165f28d696dcb0"
+                },
+                {
+                    "k": "repository",
+                    "v": "tr4l/peter-porker"
+                },
+                {
+                    "k": "repository_owner",
+                    "v": "tr4l"
+                },
+                {
+                    "k": "repository_owner_id",
+                    "v": "11498598"
+                },
+                {
+                    "k": "repositoryUrl",
+                    "v": "git://github.com/tr4l/peter-porker.git"
+                },
+                {
+                    "k": "run_id",
+                    "v": "12465090603"
+                },
+                {
+                    "k": "run_number",
+                    "v": "21"
+                },
+                {
+                    "k": "retention_days",
+                    "v": "90"
+                },
+                {
+                    "k": "run_attempt",
+                    "v": "1"
+                },
+                {
+                    "k": "artifact_cache_size_limit",
+                    "v": "10"
+                },
+                {
+                    "k": "repository_visibility",
+                    "v": "private"
+                },
+                {
+                    "k": "repo-self-hosted-runners-disabled",
+                    "v": false
+                },
+                {
+                    "k": "enterprise-managed-business-id",
+                    "v": ""
+                },
+                {
+                    "k": "repository_id",
+                    "v": "774414833"
+                },
+                {
+                    "k": "actor_id",
+                    "v": "11498598"
+                },
+                {
+                    "k": "actor",
+                    "v": "tr4l"
+                },
+                {
+                    "k": "triggering_actor",
+                    "v": "tr4l"
+                },
+                {
+                    "k": "workflow",
+                    "v": "Jobs example"
+                },
+                {
+                    "k": "head_ref",
+                    "v": ""
+                },
+                {
+                    "k": "base_ref",
+                    "v": ""
+                },
+                {
+                    "k": "event_name",
+                    "v": "workflow_dispatch"
+                },
+                {
+                    "k": "event",
+                    "v": {
+                        "t": 2,
+                        "d": [
+                            {
+                                "k": "inputs",
+                                "v": null
+                            },
+                            {
+                                "k": "ref",
+                                "v": "refs/heads/main"
+                            },
+                            {
+                                "k": "repository",
+                                "v": {
+                                    "t": 2,
+                                    "d": [
+                                        {
+                                            "k": "allow_forking",
+                                            "v": true
+                                        },
+                                        {
+                                            "k": "archive_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/{archive_format}{/ref}"
+                                        },
+                                        {
+                                            "k": "archived",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "assignees_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/assignees{/user}"
+                                        },
+                                        {
+                                            "k": "blobs_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/git/blobs{/sha}"
+                                        },
+                                        {
+                                            "k": "branches_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/branches{/branch}"
+                                        },
+                                        {
+                                            "k": "clone_url",
+                                            "v": "https://github.com/tr4l/peter-porker.git"
+                                        },
+                                        {
+                                            "k": "collaborators_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/collaborators{/collaborator}"
+                                        },
+                                        {
+                                            "k": "comments_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/comments{/number}"
+                                        },
+                                        {
+                                            "k": "commits_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/commits{/sha}"
+                                        },
+                                        {
+                                            "k": "compare_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/compare/{base}...{head}"
+                                        },
+                                        {
+                                            "k": "contents_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/contents/{+path}"
+                                        },
+                                        {
+                                            "k": "contributors_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/contributors"
+                                        },
+                                        {
+                                            "k": "created_at",
+                                            "v": "2024-03-19T14:08:30Z"
+                                        },
+                                        {
+                                            "k": "default_branch",
+                                            "v": "main"
+                                        },
+                                        {
+                                            "k": "deployments_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/deployments"
+                                        },
+                                        {
+                                            "k": "description",
+                                            "v": null
+                                        },
+                                        {
+                                            "k": "disabled",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "downloads_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/downloads"
+                                        },
+                                        {
+                                            "k": "events_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/events"
+                                        },
+                                        {
+                                            "k": "fork",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "forks",
+                                            "v": 0.0
+                                        },
+                                        {
+                                            "k": "forks_count",
+                                            "v": 0.0
+                                        },
+                                        {
+                                            "k": "forks_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/forks"
+                                        },
+                                        {
+                                            "k": "full_name",
+                                            "v": "tr4l/peter-porker"
+                                        },
+                                        {
+                                            "k": "git_commits_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/git/commits{/sha}"
+                                        },
+                                        {
+                                            "k": "git_refs_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/git/refs{/sha}"
+                                        },
+                                        {
+                                            "k": "git_tags_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/git/tags{/sha}"
+                                        },
+                                        {
+                                            "k": "git_url",
+                                            "v": "git://github.com/tr4l/peter-porker.git"
+                                        },
+                                        {
+                                            "k": "has_discussions",
+                                            "v": true
+                                        },
+                                        {
+                                            "k": "has_downloads",
+                                            "v": true
+                                        },
+                                        {
+                                            "k": "has_issues",
+                                            "v": true
+                                        },
+                                        {
+                                            "k": "has_pages",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "has_projects",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "has_wiki",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "homepage",
+                                            "v": null
+                                        },
+                                        {
+                                            "k": "hooks_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/hooks"
+                                        },
+                                        {
+                                            "k": "html_url",
+                                            "v": "https://github.com/tr4l/peter-porker"
+                                        },
+                                        {
+                                            "k": "id",
+                                            "v": 774414833.0
+                                        },
+                                        {
+                                            "k": "is_template",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "issue_comment_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/issues/comments{/number}"
+                                        },
+                                        {
+                                            "k": "issue_events_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/issues/events{/number}"
+                                        },
+                                        {
+                                            "k": "issues_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/issues{/number}"
+                                        },
+                                        {
+                                            "k": "keys_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/keys{/key_id}"
+                                        },
+                                        {
+                                            "k": "labels_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/labels{/name}"
+                                        },
+                                        {
+                                            "k": "language",
+                                            "v": "JavaScript"
+                                        },
+                                        {
+                                            "k": "languages_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/languages"
+                                        },
+                                        {
+                                            "k": "license",
+                                            "v": null
+                                        },
+                                        {
+                                            "k": "merges_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/merges"
+                                        },
+                                        {
+                                            "k": "milestones_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/milestones{/number}"
+                                        },
+                                        {
+                                            "k": "mirror_url",
+                                            "v": null
+                                        },
+                                        {
+                                            "k": "name",
+                                            "v": "peter-porker"
+                                        },
+                                        {
+                                            "k": "node_id",
+                                            "v": "R_kgDOLiih8Q"
+                                        },
+                                        {
+                                            "k": "notifications_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/notifications{?since,all,participating}"
+                                        },
+                                        {
+                                            "k": "open_issues",
+                                            "v": 13.0
+                                        },
+                                        {
+                                            "k": "open_issues_count",
+                                            "v": 13.0
+                                        },
+                                        {
+                                            "k": "owner",
+                                            "v": {
+                                                "t": 2,
+                                                "d": [
+                                                    {
+                                                        "k": "avatar_url",
+                                                        "v": "https://avatars.githubusercontent.com/u/11498598?v=4"
+                                                    },
+                                                    {
+                                                        "k": "events_url",
+                                                        "v": "https://api.github.com/users/tr4l/events{/privacy}"
+                                                    },
+                                                    {
+                                                        "k": "followers_url",
+                                                        "v": "https://api.github.com/users/tr4l/followers"
+                                                    },
+                                                    {
+                                                        "k": "following_url",
+                                                        "v": "https://api.github.com/users/tr4l/following{/other_user}"
+                                                    },
+                                                    {
+                                                        "k": "gists_url",
+                                                        "v": "https://api.github.com/users/tr4l/gists{/gist_id}"
+                                                    },
+                                                    {
+                                                        "k": "gravatar_id",
+                                                        "v": ""
+                                                    },
+                                                    {
+                                                        "k": "html_url",
+                                                        "v": "https://github.com/tr4l"
+                                                    },
+                                                    {
+                                                        "k": "id",
+                                                        "v": 11498598.0
+                                                    },
+                                                    {
+                                                        "k": "login",
+                                                        "v": "tr4l"
+                                                    },
+                                                    {
+                                                        "k": "node_id",
+                                                        "v": "MDQ6VXNlcjExNDk4NTk4"
+                                                    },
+                                                    {
+                                                        "k": "organizations_url",
+                                                        "v": "https://api.github.com/users/tr4l/orgs"
+                                                    },
+                                                    {
+                                                        "k": "received_events_url",
+                                                        "v": "https://api.github.com/users/tr4l/received_events"
+                                                    },
+                                                    {
+                                                        "k": "repos_url",
+                                                        "v": "https://api.github.com/users/tr4l/repos"
+                                                    },
+                                                    {
+                                                        "k": "site_admin",
+                                                        "v": false
+                                                    },
+                                                    {
+                                                        "k": "starred_url",
+                                                        "v": "https://api.github.com/users/tr4l/starred{/owner}{/repo}"
+                                                    },
+                                                    {
+                                                        "k": "subscriptions_url",
+                                                        "v": "https://api.github.com/users/tr4l/subscriptions"
+                                                    },
+                                                    {
+                                                        "k": "type",
+                                                        "v": "User"
+                                                    },
+                                                    {
+                                                        "k": "url",
+                                                        "v": "https://api.github.com/users/tr4l"
+                                                    },
+                                                    {
+                                                        "k": "user_view_type",
+                                                        "v": "public"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "k": "private",
+                                            "v": true
+                                        },
+                                        {
+                                            "k": "pulls_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/pulls{/number}"
+                                        },
+                                        {
+                                            "k": "pushed_at",
+                                            "v": "2024-12-23T10:10:34Z"
+                                        },
+                                        {
+                                            "k": "releases_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/releases{/id}"
+                                        },
+                                        {
+                                            "k": "size",
+                                            "v": 366.0
+                                        },
+                                        {
+                                            "k": "ssh_url",
+                                            "v": "git@github.com:tr4l/peter-porker.git"
+                                        },
+                                        {
+                                            "k": "stargazers_count",
+                                            "v": 0.0
+                                        },
+                                        {
+                                            "k": "stargazers_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/stargazers"
+                                        },
+                                        {
+                                            "k": "statuses_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/statuses/{sha}"
+                                        },
+                                        {
+                                            "k": "subscribers_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/subscribers"
+                                        },
+                                        {
+                                            "k": "subscription_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/subscription"
+                                        },
+                                        {
+                                            "k": "svn_url",
+                                            "v": "https://github.com/tr4l/peter-porker"
+                                        },
+                                        {
+                                            "k": "tags_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/tags"
+                                        },
+                                        {
+                                            "k": "teams_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/teams"
+                                        },
+                                        {
+                                            "k": "topics",
+                                            "v": {
+                                                "t": 1
+                                            }
+                                        },
+                                        {
+                                            "k": "trees_url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker/git/trees{/sha}"
+                                        },
+                                        {
+                                            "k": "updated_at",
+                                            "v": "2024-12-23T10:10:38Z"
+                                        },
+                                        {
+                                            "k": "url",
+                                            "v": "https://api.github.com/repos/tr4l/peter-porker"
+                                        },
+                                        {
+                                            "k": "visibility",
+                                            "v": "private"
+                                        },
+                                        {
+                                            "k": "watchers",
+                                            "v": 0.0
+                                        },
+                                        {
+                                            "k": "watchers_count",
+                                            "v": 0.0
+                                        },
+                                        {
+                                            "k": "web_commit_signoff_required",
+                                            "v": false
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "k": "sender",
+                                "v": {
+                                    "t": 2,
+                                    "d": [
+                                        {
+                                            "k": "avatar_url",
+                                            "v": "https://avatars.githubusercontent.com/u/11498598?v=4"
+                                        },
+                                        {
+                                            "k": "events_url",
+                                            "v": "https://api.github.com/users/tr4l/events{/privacy}"
+                                        },
+                                        {
+                                            "k": "followers_url",
+                                            "v": "https://api.github.com/users/tr4l/followers"
+                                        },
+                                        {
+                                            "k": "following_url",
+                                            "v": "https://api.github.com/users/tr4l/following{/other_user}"
+                                        },
+                                        {
+                                            "k": "gists_url",
+                                            "v": "https://api.github.com/users/tr4l/gists{/gist_id}"
+                                        },
+                                        {
+                                            "k": "gravatar_id",
+                                            "v": ""
+                                        },
+                                        {
+                                            "k": "html_url",
+                                            "v": "https://github.com/tr4l"
+                                        },
+                                        {
+                                            "k": "id",
+                                            "v": 11498598.0
+                                        },
+                                        {
+                                            "k": "login",
+                                            "v": "tr4l"
+                                        },
+                                        {
+                                            "k": "node_id",
+                                            "v": "MDQ6VXNlcjExNDk4NTk4"
+                                        },
+                                        {
+                                            "k": "organizations_url",
+                                            "v": "https://api.github.com/users/tr4l/orgs"
+                                        },
+                                        {
+                                            "k": "received_events_url",
+                                            "v": "https://api.github.com/users/tr4l/received_events"
+                                        },
+                                        {
+                                            "k": "repos_url",
+                                            "v": "https://api.github.com/users/tr4l/repos"
+                                        },
+                                        {
+                                            "k": "site_admin",
+                                            "v": false
+                                        },
+                                        {
+                                            "k": "starred_url",
+                                            "v": "https://api.github.com/users/tr4l/starred{/owner}{/repo}"
+                                        },
+                                        {
+                                            "k": "subscriptions_url",
+                                            "v": "https://api.github.com/users/tr4l/subscriptions"
+                                        },
+                                        {
+                                            "k": "type",
+                                            "v": "User"
+                                        },
+                                        {
+                                            "k": "url",
+                                            "v": "https://api.github.com/users/tr4l"
+                                        },
+                                        {
+                                            "k": "user_view_type",
+                                            "v": "public"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "k": "workflow",
+                                "v": ".github/workflows/memdump.yml"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "k": "server_url",
+                    "v": "https://github.com"
+                },
+                {
+                    "k": "api_url",
+                    "v": "https://api.github.com"
+                },
+                {
+                    "k": "graphql_url",
+                    "v": "https://api.github.com/graphql"
+                },
+                {
+                    "k": "ref_name",
+                    "v": "main"
+                },
+                {
+                    "k": "ref_protected",
+                    "v": false
+                },
+                {
+                    "k": "ref_type",
+                    "v": "branch"
+                },
+                {
+                    "k": "secret_source",
+                    "v": "Actions"
+                },
+                {
+                    "k": "workflow_ref",
+                    "v": "tr4l/peter-porker/.github/workflows/memdump.yml@refs/heads/main"
+                },
+                {
+                    "k": "workflow_sha",
+                    "v": "d0994203070363ba6f42c5a47c165f28d696dcb0"
+                }
+            ]
+        },
+        "vars": {
+            "t": 2,
+            "d": [
+                {
+                    "k": "VARIABLE",
+                    "v": "This is a variable"
+                },
+                {
+                    "k": "VARIABLE2",
+                    "v": "VARIABLE2"
+                }
+            ]
+        },
+        "run-feature-flags": {
+            "t": 2,
+            "d": [
+                {
+                    "k": "actions_stream_logs_via_results_service",
+                    "v": true
+                },
+                {
+                    "k": "actions_use_results_service",
+                    "v": true
+                },
+                {
+                    "k": "actions_uses_cache_service_v2",
+                    "v": false
+                },
+                {
+                    "k": "block_artifacts_v3_exempted",
+                    "v": false
+                },
+                {
+                    "k": "larger_runners_custom_image_generation",
+                    "v": false
+                }
+            ]
+        },
+        "partialrerun": false,
+        "needs": {
+            "t": 2
+        },
+        "inputs": {
+            "t": 2
+        },
+        "matrix": null,
+        "strategy": {
+            "t": 2,
+            "d": [
+                {
+                    "k": "fail-fast",
+                    "v": true
+                },
+                {
+                    "k": "job-index",
+                    "v": 0.0
+                },
+                {
+                    "k": "job-total",
+                    "v": 1.0
+                },
+                {
+                    "k": "max-parallel",
+                    "v": 1.0
+                }
+            ]
+        },
+        "EndpointsOverride": null
+    }
+}
