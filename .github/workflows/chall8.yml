@@ -1,0 +1,33 @@
+name: Unused like your PP
+on:
+  issues:
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      error:    ${{ steps.validate.outputs.error }}
+      message:  ${{ steps.validate.outputs.message }}
+    steps:
+      - id: validate #data.json is user controlled
+        env:
+          CONTENT: ${{ github.event.issue.body }}
+        run: |
+          echo "${CONTENT}" > data.json
+          if jq '.' data.json; then
+            echo "error=false" >> $GITHUB_OUTPUT
+          else
+            echo "error=true" >> $GITHUB_OUTPUT
+            echo "message=Json input is not valid" >> $GITHUB_OUTPUT
+          fi
+  error-handling:
+    needs:
+      setup
+    runs-on: ubuntu-latest
+    steps:
+      - id: stuff
+        run: |
+          echo test
+          if [[ "${{ needs.setup.outputs.error}}" == "true" ]]; then
+            ./sendReport -m '${{ needs.setup.outputs.message}}'
+            exit 1; #put the step in red, and prevent next step to be executed
+          fi
