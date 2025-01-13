@@ -1,0 +1,15 @@
+baseURL = 'https://example.org/'
+
+theme = ["github.com/joshed-io/reveal-hugo"]
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+[markup.goldmark.renderer]
+unsafe = true
+
+[outputFormats.Reveal]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
+
+[params.reveal_hugo]
+custom_theme = "reveal-hugo/themes/robot-lung.css"
