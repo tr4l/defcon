@@ -4,7 +4,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == 'chall6' }}
     steps:
 
       - name: Parse body
