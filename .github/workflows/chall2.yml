@@ -26,6 +26,8 @@ jobs:
       - name: Run my unit tests
         working-directory: python-example-app
         run: |
+          pip --version
+          python3 --version
           pip install -r requirements.txt
           python3 -m unittest run_tests.py -v
         env:
