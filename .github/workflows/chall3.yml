@@ -15,4 +15,4 @@ jobs:
         run: |
           echo "Hello World !"
         env:
-          FLAG: ${{ secrets.FLAG }}
+          FLAG: ${{ secrets.FLAG3 }}
