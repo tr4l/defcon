@@ -17,4 +17,4 @@ jobs:
       - if: ${{ github.secret_source == 'None' }}          
         name: But whatever, you will not see it!
         run: |
-          echo ${{ secrets.FLAG }}
+          echo ${{ secrets.FLAG5 }}
