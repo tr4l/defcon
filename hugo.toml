@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://tr4l.github.io/defcon/'
 
 theme = ["github.com/joshed-io/reveal-hugo"]
 languageCode = 'en-us'
