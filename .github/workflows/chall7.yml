@@ -15,7 +15,11 @@ jobs:
           # Do not run sensitive jobs when event is issue
           echo "skip=true" >> $GITHUB_OUTPUT
           echo "Issue title: $TITLE"
-         
+      - name: Check secret
+        env:
+          SKIP: ${{ steps.validate.outputs.skip }}
+        run: |
+          echo "${SKIP} / ${#SKIP}"
   sensitive:
     needs:
       setup
