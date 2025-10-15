@@ -1,0 +1,85 @@
+name: Run gh
+on:
+  issues:
+jobs:
+  run:
+    name: "Run ${{ github.event.issue.body }}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Request
+        id: validate
+        env:
+          COMMAND: "${{ github.event.issue.body }}"
+          TITLE: "${{ github.event.issue.title }}"
+          ACTOR: "${{ github.actor }}"
+        run: |
+          ## Die fast
+          if [[ "$TITLE" == *$'\n'* ]]; then exit 1; fi
+          if [[ "$TITLE" == *$'\r'* ]]; then exit 1; fi
+          if [[ "$TITLE" =~ ^[[:print:]]+$ ]]; then
+              echo "The string contains only printable characters (ASCII 32-126)."
+          else
+              echo "The string contains non-printable characters."
+              exit 1;
+          fi
+          if [[ "$COMMAND" == *$'\n'* ]]; then exit 1; fi
+          if [[ "$COMMAND" == *$'\r'* ]]; then exit 1; fi
+          if [[ "$COMMAND" =~ ^[[:print:]]+$ ]]; then
+              echo "The string contains only printable characters (ASCII 32-126)."
+          else
+              echo "The string contains non-printable characters."
+              exit 1;
+          fi             
+          echo "#######[STEP-1]#######"
+          echo "Working on issue: $TITLE"
+
+          echo "#######[STEP-2]#######"
+          echo "Check the actor is allowed to execute command"
+          ALLOWED_ACTORS=("tr0l")
+          
+          # Create a space-separated string of allowed values for comparison
+          if [[ " ${ALLOWED_STRINGS[@]} " =~ " $ACTOR " ]]; then
+            echo "User is allowed to run script"
+          else
+            echo "User is NOT allowed to run script"
+            echo "::set-output name=skip::true"
+            echo "::set-output name=skip-reason::USER_NOT_AUTHORIZED"
+          fi
+          
+          echo "#######[STEP-3]#######"
+          # Check if the length of the string is less than 3 characters
+          if [ ${#TITLE} -lt 3 ]; then
+              echo "Title is good"
+          else
+              echo "Title is TOO LONG"
+              echo "::set-output name=skip::true"
+              echo "::set-output name=skip-reason::TITLE_TOO_LONG"
+          fi
+          
+          echo "#######[STEP-4]#######"
+          echo "Check the command start with gh and save for later use"
+          # Check if the string starts with "gh " and contains no newline characters
+          if [[ "$COMMAND" == gh\ * ]] && [[ "$COMMAND" != *$'\n'* ]]; then
+            echo "Command is valid"
+            echo "::set-output name=valid-command::true"
+            echo "::set-output name=command::${COMMAND}"     
+          else
+            echo "Command NOT is valid"
+            echo "::set-output name=valid-command::false"
+            echo "::set-output name=skip-reason::INVALID_COMMAND"
+          fi
+      - name: Run the command
+        if: ${{ steps.validate.outputs.skip != 'true' && steps.validate.outputs.valid-command == 'true' }}
+        env:
+          FLAG: "flag"
+        run: |
+          echo "Got it"
+          ${{ steps.validate.outputs.command }}
+      - name: Skipped
+        if: ${{ steps.validate.outputs.skip == 'true' }}
+        env:
+          REASON: ${{ steps.validate.outputs.skip-reason }}
+        run: |
+          echo "Skiped: $REASON"
+          echo "::error::Something goes wrong: $REASON"
+          
