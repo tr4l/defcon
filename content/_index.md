@@ -419,14 +419,14 @@ https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManag
 
 ---
 
-# Not so documented syntax
+# Not so documented syntax (only one command per line)
 
-Actual syntax
+Actual syntax (need to be at the start of a new line)
 ```
 echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
 ```
 
-Previous syntax
+Previous syntax (can start anywhere in the line)
 ```
 echo "##[workflow-command parameter1={data},parameter2={data}]{command value}"
 ```
@@ -836,6 +836,8 @@ jobs:
 use: stop-commands
 result: set-out is not executed
 ```
+
+Note: the token of a the stop-commands became a new commands, that can be invoked with both old and new workflow syntax.
 
 ---
 
