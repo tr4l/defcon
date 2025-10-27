@@ -839,6 +839,8 @@ result: set-out is not executed
 
 Note: the token of a the stop-commands became a new commands, that can be invoked with both old and new workflow syntax.
 
+For instance ::stop-commands::IGNORE create a new commands ::IGNORE:: or ##[IGNORE]
+
 ---
 
 ## Skip it fun
